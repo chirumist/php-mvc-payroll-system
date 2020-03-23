@@ -99,4 +99,19 @@ class Controller extends DB {
             $this->forgetSession($key);
         }
     }
+
+    public function auth(){
+
+        $auth = $this->getSession('auth');
+
+        if (!isset($auth) && $auth == '' && '/login' != $_SERVER['REQUEST_URI']) {
+            Redirect::to('login');
+        }
+    }
+
+    public function checkAuth(){
+        if (isset($auth) && $auth !== '' && '/logout' != $_SERVER['REQUEST_URI']) {
+            Redirect::to('welcome');
+        }
+    }
 }

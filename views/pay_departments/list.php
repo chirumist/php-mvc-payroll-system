@@ -6,9 +6,8 @@
                 <h5 class="card-title">Department List</h5>
             </div>
             <div class="card-body">
-                <?php $dir = dirname(__DIR__);
-                include $dir.'/partials/helper.php'?>
                 <?php $this->alertFlash('error','danger','alert')?>
+                <?php $this->alertFlash('success','success','alert')?>
                 <div class="table-responsive">
                     <table class="table table-hover" id="datatable">
                         <thead class=" text-primary">

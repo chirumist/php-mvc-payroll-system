@@ -2,14 +2,9 @@
 
 Route::get('/', 'LoginController@index');
 Route::post('/login', 'LoginController@login');
-
-Route::get('/signup', 'RegisterController@index');
-Route::post('/signup', 'RegisterController@signup');
-Route::get('/thankyou', 'RegisterController@thankyou');
+Route::get('/logout', 'LoginController@logout');
 
 Route::get('/welcome', 'WelcomeController@index');
-Route::get('/logout', 'LoginController@logout');
-Route::get('/error-404', 'ErrorController@pageNotFound');
 
 /* Department Feature */
 Route::get('/department-list', 'DepartmentController@index');
@@ -37,6 +32,8 @@ Route::get('/pay_salary-create','EmployeeController@salaryCreate');
 Route::get('/pay_salary-generate','EmployeeController@salaryGenerate');
 
 Route::get('/ajaxList','WelcomeController@ajaxList');
+
+Route::get('/error-404', 'ErrorController@pageNotFound');
 
 
 //Route::any('*', 'ErrorController@notFoud');

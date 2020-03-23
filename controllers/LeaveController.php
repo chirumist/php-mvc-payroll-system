@@ -3,11 +3,7 @@
 class LeaveController extends Controller{
     public function __construct()
     {
-        session_start();
-
-//        if (!isset($_SESSION['user'])) {
-//                  return Redirect::to('');
-//        }
+        $this->auth();
     }
 
     public function index(){

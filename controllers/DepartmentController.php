@@ -3,43 +3,31 @@
 class DepartmentController extends Controller {
 
     protected $model;
+
     public function __construct()
     {
 
         $this->model = new Department();
 
-//        if (!isset($_SESSION['user'])) {
-//                  return Redirect::to('');
-//        }
+        $this->auth();
     }
 
     public function index(){
         $data['title'] = 'Department';
-
         $data['view'] = 'pay_departments/list';
-
         $data['active'] = 'department';
-
         $data['departments'] = $this->model->get();
-
         $data['assets'] = ['datatable'];
-
         return $this->view('layout',$data);
     }
 
     public function create(){
         $id = $this->input('id');
-
         $data['title'] = 'Department';
-
         $data['subtitle'] = 'Create Department';
-
         $data['view'] = 'pay_departments/form';
-
         $data['active'] = 'department';
-
         $data['department'] = $this->model;
-
         if (isset($id) && $id !== ''){
             $data['subtitle'] = 'Edit Department';
             $data['department'] = $this->model->find('id',$id);
@@ -48,7 +36,6 @@ class DepartmentController extends Controller {
                 Redirect::to('department-list');
             }
         }
-
         return $this->view('layout',$data);
 
     }
@@ -57,55 +44,30 @@ class DepartmentController extends Controller {
         $validate = $this->validation([
             'name' => 'required'
         ]);
-
         $this->validate($validate);
-
-        $data = [
-            'name' => $this->input('name')
-        ];
-        try {
-            $this->model->store($data);
-
-            Redirect::to('department-list');
-        } catch (Exception $e) {
-            $this->setSession('error',$e->getMessage());
-            Redirect::to('department-create');
-        }
+        $data = ['name' => $this->input('name')];
+        $this->model->store($data);
+        $this->setSession('success','Department Added Successfully');
+        Redirect::to('department-list');
     }
 
     public function update(){
         $validate = $this->validation([
             'name' => 'required'
         ]);
-
         $this->validate($validate);
-
-        $data = [
-            'name' => $this->input('name')
-        ];
+        $data = ['name' => $this->input('name')];
         $id = $this->input('id');
-        try {
-            $this->model->update($data,'id',$id);
-
-            Redirect::to('department-list');
-        } catch (Exception $e) {
-            $this->setSession('error',$e->getMessage());
-            Redirect::to('department-create');
-        }
+        $this->model->update($data,'id',$id);
+        $this->setSession('success','Department Updated Successfully');
+        Redirect::to('department-list');
     }
 
     public function delete(){
         $id = $this->input('id');
-
         $this->model->delete('id',$id);
-
         header('Content-Type: application/json');
-
-        $data = [
-            'message' => 'Department deleted successfully!',
-            'status' => true
-        ];
-
+        $data = ['message' => 'Department deleted successfully!', 'status' => true];
         echo json_encode($data);
     }
 }

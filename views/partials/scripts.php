@@ -4,6 +4,7 @@
 <script src="<?php assets('/static/js/core/bootstrap.min.js');?>"></script>
 <script src="<?php assets('/static/js/paper-dashboard.min.js');?>"></script>
 <script src="<?php assets('/static/js/plugins/bootstrap-notify.js');?>"></script>
+<script src="<?php assets('/static/plugins/select2/js/select2.js');?>"></script>
 <?php if(isset($data['assets']) && in_array('datatable', $data['assets'])) {?>
     <script src="<?php assets('/static/plugins/DataTables/datatables.js'); ?>"></script>
 <?php }?>
@@ -40,5 +41,7 @@
                 }
             });
         }
+
+        $('.select2js').select2();
     })
 </script>
