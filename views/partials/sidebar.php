@@ -14,6 +14,7 @@
     </div>
     <div class="sidebar-wrapper">
         <ul class="nav">
+            <?php if($this->getSession('auth')->type == 'admin') {?>
             <li class="<?php if($data['active'] == 'dashboard'){ echo 'active'; } ?>">
                 <a href="<?php route('welcome');?>">
                     <i class="nc-icon nc-layout-11"></i>
@@ -32,6 +33,8 @@
                     <p>Employee</p>
                 </a>
             </li>
+            <?php } ?>
+            <?php if($this->getSession('auth')->type == 'employee' || $this->getSession('auth')->type == 'admin') {?>
             <li class="<?php if($data['active'] == 'leave'){ echo 'active'; } ?>">
                 <a href="<?php route('leave-list');?>">
                     <i class="nc-icon nc-user-run"></i>
@@ -44,6 +47,7 @@
                     <p>Salary</p>
                 </a>
             </li>
+            <?php } ?>
         </ul>
     </div>
 </div>

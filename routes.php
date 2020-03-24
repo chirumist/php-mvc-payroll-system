@@ -25,11 +25,11 @@ Route::get('/leave-list', 'LeaveController@index');
 Route::get('/leave-form', 'LeaveController@create');
 Route::post('/leave-store', 'LeaveController@store');
 Route::post('/leave-update', 'LeaveController@update');
-Route::get('/leave/delete', 'LeaveController@delete');
+Route::get('/leave-delete', 'LeaveController@delete');
 
 /* Salary Feature*/
-Route::get('/pay_salary-create','EmployeeController@salaryCreate');
-Route::get('/pay_salary-generate','EmployeeController@salaryGenerate');
+Route::get('/salary-create','EmployeeController@salaryCreate');
+Route::get('/salary-generate','EmployeeController@salaryGenerate');
 
 Route::get('/ajaxList','WelcomeController@ajaxList');
 

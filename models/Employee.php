@@ -16,4 +16,16 @@ class Employee extends Model {
         'account_no',
         'contact_no'
     ];
+
+    public function getEmployee(){
+        $this->rawQuery('Select department.name as dept_name,users.username,employee.* from employee left join department on employee.dept_id=department.id left join users on employee.user_id=users.id');
+
+        return $this->fetchAll();
+    }
+
+    public function findEmployee($id){
+        $this->rawQuery("Select department.name as dept_name,users.username,users.email,users.password,employee.* from employee left join department on employee.dept_id=department.id left join users on employee.user_id=users.id WHERE employee.id=".$id);
+
+        return $this->fetch();
+    }
 }

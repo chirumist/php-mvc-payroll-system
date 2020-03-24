@@ -39,4 +39,8 @@ class DB {
     public function fetch(){
         return $this->result->fetch(PDO::FETCH_OBJ);
     }
+
+    public function lastInsertId(){
+        return $this->con->lastInsertId();
+    }
 }

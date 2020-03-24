@@ -21,11 +21,11 @@ class Model extends DB{
 
         if (isset($column) && $column !== ''){
 
-            $this->query('SELECT '.$column.' from '.$this->table);
+            $this->query('SELECT '.$column.' from `'.$this->table.'`');
 
         } else {
 
-            $this->query('SELECT * from '.$this->table);
+            $this->query('SELECT * from `'.$this->table.'`');
         }
 
         return $this->fetchAll();
@@ -34,7 +34,7 @@ class Model extends DB{
 
     public function find($column,$value){
 
-        $this->query('SELECT * from '.$this->table.' WHERE '.$column.'='.$value);
+        $this->query('SELECT * from `'.$this->table.'` WHERE '.$column.'='.$value);
 
         return $this->fetch();
 
@@ -61,10 +61,8 @@ class Model extends DB{
     public function store($data){
 
         $this->fillableCreateField($data);
-
-        $this->query('INSERT INTO '.$this->table.'('.$this->column.') Values('.$this->emptyValue.')',array_values($this->columnValue));
-
-        return $this->fetch();
+        $data = $this->query('INSERT INTO `'.$this->table.'` ('.$this->column.') Values('.$this->emptyValue.')',$this->columnValue);
+        return $this->lastInsertId();
     }
 
     public function update($data,$column,$id){
@@ -72,8 +70,7 @@ class Model extends DB{
         $this->fillableUpdateFiled($data);
 
         $data[$column] = $id;
-
-        $this->query('UPDATE '.$this->table.' SET '.$this->column.' WHERE '.$column.'=?',array_values($data));
+        $data = $this->query('UPDATE `'.$this->table.'` SET '.$this->column.' WHERE '.$column.'=?',array_values($data));
 
         return $this->fetch();
 
@@ -81,7 +78,7 @@ class Model extends DB{
 
     public function delete($column,$value){
 
-        $this->query('DELETE from '.$this->table.' WHERE '.$column .'='.$value);
+        $this->query('DELETE from `'.$this->table.'` WHERE '.$column .'='.$value);
 
     }
 
@@ -119,11 +116,11 @@ class Model extends DB{
 
     protected function fieldLoop($keys,$type = 'create'){
 
-        foreach ($this->fillable as $key => $value){
+        foreach ($keys as $key => $value){
             if ($type == 'create') {
                 $this->creatEmpty[$key] = '?';
             }else{
-                $this->creatEmpty[$key] = trim($value).'=?';
+                $this->creatEmpty[$key] = trim($key).'=?';
             }
         }
 

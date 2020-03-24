@@ -9,13 +9,19 @@
                 <?php $this->alertFlash('error','danger','alert')?>
                 <?php $this->alertFlash('success','success','alert')?>
                 <div class="table-responsive">
-                    <table class="table" id="datatable">
+                    <table class="table table-hover" id="datatable">
                         <thead class=" text-primary">
                             <th>
                                 ID
                             </th>
                             <th class="text-center">
                                 NAME
+                            </th>
+                            <th class="text-center">
+                                DEPARTMENT
+                            </th>
+                            <th class="text-center">
+                                BASIC SALARY
                             </th>
                             <th class="text-right">
                                 Action
@@ -25,10 +31,16 @@
                         <?php foreach ($data['employeeList'] as $key => $value) { ?>
                             <tr>
                                 <td>
-                                    1
+                                    <?php echo $value->id ?>
                                 </td>
                                 <td class="text-center">
-                                    Niger
+                                    <?php echo $value->first_name.' '.$value->middle_name.' '.$value->last_name ?>
+                                </td>
+                                <td class="text-center">
+                                    <?php echo $value->dept_name ?>
+                                </td>
+                                <td class="text-center">
+                                    <?php echo $value->basic_salary ?>
                                 </td>
                                 <td class="text-right">
                                     <a href="<?php route('employee-form?id='.$value->id);?>" class="btn btn-success btn-sm">Edit</a>
