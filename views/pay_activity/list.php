@@ -22,9 +22,6 @@
                         <th class="text-center">
                             DATE TIME
                         </th>
-                        <th class="text-right">
-                            Action
-                        </th>
                         </thead>
                         <tbody>
                         <?php foreach ($data['activityList'] as $key => $value) {?>
@@ -42,10 +39,6 @@
                                 <?php } ?>
                                 <td class="text-center">
                                     <?php echo date('d M Y H:i:s',strtotime($value->created_at)) ?>
-                                </td>
-                                <td class="text-right">
-                                    <a href="<?php route('department-form?id='.$value->id);?>" class="btn btn-success btn-sm">Edit</a>
-                                    <a href="<?php route('department-delete?id='.$value->id);?>" data-delete="true" class="btn btn-danger btn-sm">Delete</a>
                                 </td>
                             </tr>
                         <?php } ?>

@@ -49,12 +49,17 @@ class LeaveController extends Controller{
     }
 
     public function store(){
+        $datetime1 = date_create(date('Y-m-d',strtotime($this->input('start_date'))));
+        $datetime2 = date_create(date('Y-m-d',strtotime($this->input('end_date'))));
+        $interval = date_diff($datetime1,$datetime2);
+        $days = $interval->format('%a') + 1;
         $data = [
             'emp_id' => $this->input('emp_id'),
             'start_date' => date('Y-m-d',strtotime($this->input('start_date'))),
             'end_date' => date('Y-m-d',strtotime($this->input('end_date'))),
             'comment' => $this->input('comment'),
-            'status' => $this->input('status')
+            'status' => $this->input('status'),
+            'total_days' => $days
         ];
         $leave = $this->model->store($data);
         $this->setSession('success','Leave added successfully');

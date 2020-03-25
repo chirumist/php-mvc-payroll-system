@@ -22,18 +22,6 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="">HR</label>
-                                        <input type="number" step="any" value="<?php echo isset($data['salary']->hr) ? $data['salary']->hr : ''; ?>" name="hr" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="">DA</label>
-                                        <input type="number" step="any" value="<?php echo isset($data['salary']->da) ? $data['salary']->da : ''; ?>" name="da" class="form-control">
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -41,19 +29,19 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="">TRAVELLING EXPENSES</label>
-                                        <input type="number" step="any" value="<?php echo isset($data['salary']->expense) ? $data['salary']->expense : ''; ?>" name="expense[travelling]" class="form-control exp sal-exp">
+                                        <input type="number" step="any" value="<?php echo isset($data['salary']->expense) ? $data['salary']->expense : ''; ?>" name="expense[travelling]" class="form-control exp sal-exp" min="0">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="">FULE EXPENSES</label>
-                                        <input type="number" step="any" value="<?php echo isset($data['salary']->expense) ? $data['salary']->expense : ''; ?>" name="expense[fule]" class="form-control exp ful-exp">
+                                        <input type="number" step="any" value="<?php echo isset($data['salary']->expense) ? $data['salary']->expense : ''; ?>" name="expense[fule]" class="form-control exp ful-exp" min="0">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="">TEA & LUNCH EXPENSES</label>
-                                        <input type="number" step="any" value="<?php echo isset($data['salary']->expense) ? $data['salary']->expense : ''; ?>" name="expense[tea_lunch]" class="form-control exp tl-exp">
+                                        <input type="number" step="any" value="<?php echo isset($data['salary']->expense) ? $data['salary']->expense : ''; ?>" name="expense[tea_lunch]" class="form-control exp tl-exp" min="0">
                                     </div>
                                 </div>
                             </div>

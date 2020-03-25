@@ -24,6 +24,9 @@
                             END DATE
                         </th>
                         <th class="text-center">
+                            TOTAL DAYS
+                        </th>
+                        <th class="text-center">
                             STATUS
                         </th>
                         <th class="text-right">
@@ -44,6 +47,11 @@
                                 </td>
                                 <td class="text-capitalize text-center">
                                     <?php echo isset($value->end_date) ? date('d M Y',strtotime($value->end_date)) : '-' ?>
+                                </td>
+                                <td class="text-center">
+                                    <?php
+                                    echo $value->total_days;
+                                    ?>
                                 </td>
                                 <td class="text-capitalize text-center">
                                     <?php

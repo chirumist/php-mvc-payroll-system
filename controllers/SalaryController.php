@@ -47,17 +47,14 @@ class SalaryController extends Controller{
     public function store(){
         $total = 0;
         $empID = $this->input('emp_id');
-        $this->model->rawQuery('SELECT * from `leave` WHERE emp_id='.$empID);
-        $leave = $this->model->fetchAll();
-        $count = count($leave);
+        $this->model->rawQuery('SELECT SUM(total_days) as leave_days from `leave` WHERE emp_id='.$empID);
+        $leave = $this->model->fetch();
 
-        $total = $this->input('totalExp') + $this->input('basic_salary');
+        $total = ($this->input('totalExp') + $this->input('basic_salary')) - ($leave->leave_days * 750);
 
         $data = [
             'emp_id' => $this->input('emp_id'),
-            'leave_days' => $count,
-            'hr' => $this->input('hr'),
-            'da' => $this->input('da'),
+            'leave_days' => $leave->leave_days,
             'expense' => json_encode($this->input('expense')),
             'total' => $total,
             'issue_date' => date('Y-m-d')
@@ -65,6 +62,5 @@ class SalaryController extends Controller{
         $this->model->store($data);
         $this->setSession('success','Employee added successfully');
         Redirect::to('salary-list');
-        return true;
     }
 }

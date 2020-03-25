@@ -11,7 +11,7 @@
                             <div class="form-group">
                                 <input type="hidden" name="id" value="<?php echo (isset($data['department']->id) && $data['department']->id != '') ? $data['department']->id : -1 ;?>" required="true">
                                 <label for="">Name</label>
-                                <input type="text" value="<?php echo isset($data['department']->name) ? $data['department']->name : ''; ?>" name="name" class="form-control" required="true">
+                                <input type="text" value="<?php echo isset($data['department']->name) ? $data['department']->name : ''; ?>" name="name" class="form-control" required="true"required pattern="[A-Za-z]+">
                                 <?php if (isset($errors) && isset($errors['name'])) { ?>
                                     <p class="mt-2 text-danger text-capitalize"><?php echo $errors['name'] ?></p>
                                 <?php } ?>

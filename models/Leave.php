@@ -3,7 +3,7 @@ class Leave extends Model{
 
 	protected $table = "leave";
 
-	protected $fillable = ['emp_id','start_date','end_date','comment','status'];
+	protected $fillable = ['emp_id','start_date','end_date','comment','status','total_days'];
 
     public function getLeave(){
         $this->rawQuery('Select employee.first_name,employee.last_name,employee.middle_name,`leave`.* from `leave` left join employee on  `leave`.emp_id=employee.id');
