@@ -2,10 +2,13 @@
 
 class LeaveController extends Controller{
     protected $model;
+    protected $dashboardData;
 
     public function __construct()
     {
         $this->model = new Leave();
+        $user = new Users();
+        $this->dashboardData = $user->dashboard();
 
         $this->auth();
     }
@@ -14,7 +17,13 @@ class LeaveController extends Controller{
         $data['title'] = 'Leave';
         $data['view'] = 'pay_leave/list';
         $data['active'] = 'leave';
-        $data['leave'] = $this->model->getLeave();
+        $data['dashboard'] = $this->dashboardData;
+        $auth = $this->auth();
+        if (isset($auth->id) && $auth->type == 'employee'){
+            $data['leave'] = $this->model->getEmployeeLeave($auth->emp_id);
+        }else{
+            $data['leave'] = $this->model->getLeave();
+        }
         $data['assets'] = ['datatable'];
         return $this->view('layout',$data);
     }
@@ -26,6 +35,7 @@ class LeaveController extends Controller{
         $data['view'] = 'pay_leave/form';
         $data['active'] = 'department';
         $data['leave'] = $this->model;
+        $data['dashboard'] = $this->dashboardData;
         if (isset($id) && $id !== ''){
             $data['subtitle'] = 'Edit Leave';
             $data['leave'] = $this->model->findLeave($id);
@@ -43,9 +53,9 @@ class LeaveController extends Controller{
             'emp_id' => $this->input('emp_id'),
             'start_date' => date('Y-m-d',strtotime($this->input('start_date'))),
             'end_date' => date('Y-m-d',strtotime($this->input('end_date'))),
-            'comment' => $this->input('comment')
+            'comment' => $this->input('comment'),
+            'status' => $this->input('status')
         ];
-
         $leave = $this->model->store($data);
         $this->setSession('success','Leave added successfully');
         Redirect::to('leave-list');
@@ -56,7 +66,8 @@ class LeaveController extends Controller{
             'emp_id' => $this->input('emp_id'),
             'start_date' => date('Y-m-d',strtotime($this->input('start_date'))),
             'end_date' => date('Y-m-d',strtotime($this->input('end_date'))),
-            'comment' => $this->input('comment')
+            'comment' => $this->input('comment'),
+            'status' => $this->input('status'),
         ];
 
         $leave = $this->model->update($data,'id',$this->input('id'));
@@ -70,5 +81,13 @@ class LeaveController extends Controller{
         header('Content-Type: application/json');
         $data = ['message' => 'Leave deleted successfully!', 'status' => true];
         echo json_encode($data);
+    }
+
+    public function status(){
+        $id = $this->input('id');
+        $type = $this->input('status');
+        $this->model->update(['status' => $type],'id',$id);
+        $this->setSession('success','Leave Status updated successfully');
+        Redirect::to('leave-list');
     }
 }

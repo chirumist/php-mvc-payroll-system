@@ -3,11 +3,14 @@
 class DepartmentController extends Controller {
 
     protected $model;
+    protected $dashboardData;
 
     public function __construct()
     {
 
         $this->model = new Department();
+        $user = new Users();
+        $this->dashboardData = $user->dashboard();
 
         $this->auth();
     }
@@ -18,6 +21,7 @@ class DepartmentController extends Controller {
         $data['active'] = 'department';
         $data['departments'] = $this->model->get();
         $data['assets'] = ['datatable'];
+        $data['dashboard'] = $this->dashboardData;
         return $this->view('layout',$data);
     }
 
@@ -28,6 +32,7 @@ class DepartmentController extends Controller {
         $data['view'] = 'pay_departments/form';
         $data['active'] = 'department';
         $data['department'] = $this->model;
+        $data['dashboard'] = $this->dashboardData;
         if (isset($id) && $id !== ''){
             $data['subtitle'] = 'Edit Department';
             $data['department'] = $this->model->find('id',$id);

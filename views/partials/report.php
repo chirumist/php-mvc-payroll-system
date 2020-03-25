@@ -1,4 +1,6 @@
+<?php $col = $this->getSession('auth')->type != 'admin' ? 6 : 3 ?>
 <div class="row">
+    <?php if($this->getSession('auth')->type == 'admin') {?>
     <div class="col-lg-3 col-md-6 col-sm-6">
         <div class="card card-stats">
             <div class="card-body ">
@@ -10,17 +12,11 @@
                     </div>
                     <div class="col-7 col-md-8">
                         <div class="numbers">
-                            <p class="card-category">Department</p>
-                            <p class="card-title">150
+                            <p class="card-category">Departments</p>
+                            <p class="card-title"><?php echo isset($data['dashboard']['department']) ? $data['dashboard']['department'] : ''; ?>
                             <p>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="card-footer ">
-                <hr>
-                <div class="stats">
-                    <a href="" class="btn btn-primary btn-block">Add Department</a>
                 </div>
             </div>
         </div>
@@ -36,22 +32,17 @@
                     </div>
                     <div class="col-7 col-md-8">
                         <div class="numbers">
-                            <p class="card-category">Employee</p>
-                            <p class="card-title">23
+                            <p class="card-category">Employees</p>
+                            <p class="card-title"><?php echo isset($data['dashboard']['employee']) ? $data['dashboard']['employee'] : ''; ?>
                             <p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="card-footer ">
-                <hr>
-                <div class="stats">
-                    <a href="" class="btn btn-primary btn-block">Add Employee</a>
-                </div>
-            </div>
         </div>
     </div>
-    <div class="col-lg-3 col-md-6 col-sm-6">
+    <?php } ?>
+    <div class="col-lg-<?php echo $col ?> col-md-6 col-sm-6">
         <div class="card card-stats">
             <div class="card-body ">
                 <div class="row">
@@ -62,22 +53,17 @@
                     </div>
                     <div class="col-7 col-md-8">
                         <div class="numbers">
-                            <p class="card-category">Monthly Salary</p>
-                            <p class="card-title">$1,345
+                            <p class="card-category"><?php if ($this->getSession('auth')->type != 'admin') { echo 'Monthly Salary'; } else { echo 'Monthly Expenses'; }?></p>
+                            <p class="card-title"><?php echo $data['dashboard']['salary']; ?>
                             <p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="card-footer ">
-                <hr>
-                <div class="stats">
-                    <a href="" class="btn btn-primary btn-block">New Salary</a>
-                </div>
-            </div>
         </div>
     </div>
-    <div class="col-lg-3 col-md-6 col-sm-6">
+    <?php if($this->getSession('auth')->type == 'employee' || $this->getSession('auth')->type == 'admin') {?>
+    <div class="col-lg-<?php echo $col ?> col-md-6 col-sm-6">
         <div class="card card-stats">
             <div class="card-body ">
                 <div class="row">
@@ -89,18 +75,13 @@
                     <div class="col-7 col-md-8">
                         <div class="numbers">
                             <p class="card-category">Leave</p>
-                            <p class="card-title">4
+                            <p class="card-title"><?php echo $data['dashboard']['leave']; ?>
                             <p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="card-footer ">
-                <hr>
-                <div class="stats">
-                    <a href="" class="btn btn-primary btn-block">Add Leave</a>
-                </div>
-            </div>
         </div>
     </div>
+    <?php } ?>
 </div>

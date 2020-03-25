@@ -30,11 +30,13 @@ class LoginController extends Controller{
     $type = $this->input('type');
    
     $this->model->rawQuery("SELECT * FROM users WHERE email='".$user."' OR username = '".$user."' AND  password = '".$pass."' AND type='".$type."' ") ;
-
-    $data  = $this->model->fetch();
-
-      if(!empty($data)){
-
+      $data  = $this->model->fetch();
+      if(!empty($data) && $data !== NULL){
+          if ($data->type == 'employee'){
+              $this->model->rawQuery('SELECT id as emp_id from `employee` WHERE user_id='.$data->id);
+              $emp = $this->model->fetch();
+              $data->emp_id = $emp->emp_id;
+          }
         $this->setSession('auth',$data);
 
         $this->activity->store(['type' => 'login','created_at' => date('Y-m-d h:i:s'), 'user_id' => $data->id]);

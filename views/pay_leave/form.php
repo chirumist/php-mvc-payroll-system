@@ -7,6 +7,7 @@
             <div class="card-body">
                 <form action="<?php (isset($data['leave']->id) && $data['leave']->id != '') ? route('leave-update') : route('leave-store') ;?>" method="post">
                     <input type="hidden" name="id" value="<?php echo (isset($data['leave']->id) && $data['leave']->id != '') ? $data['leave']->id : -1 ;?>">
+                    <input type="hidden" name="status" value="<?php echo (isset($data['leave']->status) && $data['leave']->status != 0) ? $data['leave']->status : 0 ;?>">
                     <div class="row">
                         <?php if($this->getSession('auth')->type == 'admin') {?>
                             <div class="col-md-12">
@@ -22,24 +23,24 @@
                                 </div>
                             </div>
                         <?php } else {?>
-                            <input type="hidden" value="<?php echo $this->getSession('auth')->id?>" name="emp_id">
+                            <input type="hidden" value="<?php echo $this->getSession('auth')->emp_id?>" name="emp_id">
                         <?php }?>
                           <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">StartDate</label>
-                                <input type="date" value="<?php echo isset($data['leave']->start_date) ? $data['leave']->start_date : ''; ?>" name="start_date" class="form-control">
+                                <input type="date" value="<?php echo isset($data['leave']->start_date) ? $data['leave']->start_date : ''; ?>" name="start_date" class="form-control" required="true">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">EndDate</label>
-                                <input type="date" value="<?php echo isset($data['leave']->end_date) ? $data['leave']->end_date : ''; ?>" name="end_date" class="form-control">
+                                <input type="date" value="<?php echo isset($data['leave']->end_date) ? $data['leave']->end_date : ''; ?>" name="end_date" class="form-control" required="true">
                             </div>
                         </div>
                          <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">REASON FOR LEAVE:</label>
-                                <textarea name="comment" class="form-control"></textarea>
+                                <textarea name="comment" class="form-control" required="true"></textarea>
                             </div>
                         </div>
     

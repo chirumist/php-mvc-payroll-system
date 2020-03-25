@@ -5,6 +5,7 @@ Route::post('/login', 'LoginController@login');
 Route::get('/logout', 'LoginController@logout');
 
 Route::get('/welcome', 'WelcomeController@index');
+Route::get('/activity-list', 'WelcomeController@activityList');
 
 /* Department Feature */
 Route::get('/department-list', 'DepartmentController@index');
@@ -26,10 +27,12 @@ Route::get('/leave-form', 'LeaveController@create');
 Route::post('/leave-store', 'LeaveController@store');
 Route::post('/leave-update', 'LeaveController@update');
 Route::get('/leave-delete', 'LeaveController@delete');
+Route::get('/leave-status', 'LeaveController@status');
 
 /* Salary Feature*/
-Route::get('/salary-create','EmployeeController@salaryCreate');
-Route::get('/salary-generate','EmployeeController@salaryGenerate');
+Route::get('/salary-list','SalaryController@index');
+Route::get('/salary-form','SalaryController@create');
+Route::post('/salary-store','SalaryController@store');
 
 Route::get('/ajaxList','WelcomeController@ajaxList');
 

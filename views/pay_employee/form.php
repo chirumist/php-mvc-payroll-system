@@ -12,19 +12,19 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Username</label>
-                                <input type="text" value="<?php echo isset($data['employee']->username) ? $data['employee']->username : ''; ?>" name="username" class="form-control">
+                                <input type="text" value="<?php echo isset($data['employee']->username) ? $data['employee']->username : ''; ?>" name="username" class="form-control" required="true">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Email</label>
-                                <input type="email" value="<?php echo isset($data['employee']->email) ? $data['employee']->email : ''; ?>" name="email" class="form-control">
+                                <input type="email" value="<?php echo isset($data['employee']->email) ? $data['employee']->email : ''; ?>" name="email" class="form-control" required="true">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Password</label>
-                                <input type="password" value="<?php echo isset($data['employee']->password) ? $data['employee']->password : ''; ?>" name="password" class="form-control">
+                                <input type="password" value="<?php echo isset($data['employee']->password) ? $data['employee']->password : ''; ?>" name="password" class="form-control"required="true">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -42,49 +42,49 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="">First Name</label>
-                                <input type="text" value="<?php echo isset($data['employee']->first_name) ? $data['employee']->first_name : ''; ?>" name="first_name" class="form-control">
+                                <input type="text" value="<?php echo isset($data['employee']->first_name) ? $data['employee']->first_name : ''; ?>" name="first_name" class="form-control" required="true">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="">Middle Name</label>
-                                <input type="text" value="<?php echo isset($data['employee']->middle_name) ? $data['employee']->middle_name : ''; ?>" name="middle_name" class="form-control">
+                                <input type="text" value="<?php echo isset($data['employee']->middle_name) ? $data['employee']->middle_name : ''; ?>" name="middle_name" class="form-control" required="true">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="">Last Name</label>
-                                <input type="text" value="<?php echo isset($data['employee']->last_name) ? $data['employee']->last_name : ''; ?>" name="last_name" class="form-control">
+                                <input type="text" value="<?php echo isset($data['employee']->last_name) ? $data['employee']->last_name : ''; ?>" name="last_name" class="form-control" required="true">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">Address</label>
-                                <textarea name="address" class="form-control"><?php echo isset($data['employee']->address) ? $data['employee']->address : ''; ?></textarea>
+                                <textarea name="address" class="form-control" required="true"><?php echo isset($data['employee']->address) ? $data['employee']->address : ''; ?></textarea>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="">Basic Salary</label>
-                                <input type="number" step="any" value="<?php echo isset($data['employee']->basic_salary) ? $data['employee']->basic_salary : ''; ?>" name="basic_salary" class="form-control">
+                                <input type="number" step="any" value="<?php echo isset($data['employee']->basic_salary) ? $data['employee']->basic_salary : ''; ?>" name="basic_salary" class="form-control" required="true">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="">DOB</label>
-                                <input type="date" value="<?php echo isset($data['employee']->dob) ? $data['employee']->dob : ''; ?>" name="dob" class="form-control">
+                                <input type="date" value="<?php echo isset($data['employee']->dob) ? $data['employee']->dob : ''; ?>" name="dob" class="form-control" required="true">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="">Contact No</label>
-                                <input type="number" value="<?php echo isset($data['employee']->contact_no) ? $data['employee']->contact_no : ''; ?>" name="contact_no" class="form-control">
+                                <input type="number" value="<?php echo isset($data['employee']->contact_no) ? $data['employee']->contact_no : ''; ?>" name="contact_no" class="form-control" required="true">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="">Account No</label>
-                                <input type="number" value="<?php echo isset($data['employee']->account_no) ? $data['employee']->account_no : ''; ?>" name="account_no" class="form-control">
+                                <input type="number" value="<?php echo isset($data['employee']->account_no) ? $data['employee']->account_no : ''; ?>" name="account_no" class="form-control" required="true">
                             </div>
                         </div>
                         <div class="col-md-2">

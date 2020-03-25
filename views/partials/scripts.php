@@ -43,5 +43,22 @@
         }
 
         $('.select2js').select2();
+
+        $('.select2js').on('select2:select',function (data) {
+            let select = data.params.data
+            if($('#basic_salary').length > 0){
+                $('#basic_salary').html(select.basic_salary)
+                $('.basic_salary-hidden').val(select.basic_salary)
+            }
+        })
+
+        $('.exp').on('keyup',function () {
+            let travl = parseFloat($('.sal-exp').val()) || 0;
+            let ful = parseFloat($('.ful-exp').val()) || 0;
+            let tl = parseFloat($('.tl-exp').val()) || 0;
+            let expTotal = travl+ful+tl;
+            $('.exp-total-hidden').val(expTotal)
+            $('#total_exp').html(expTotal)
+        })
     })
 </script>

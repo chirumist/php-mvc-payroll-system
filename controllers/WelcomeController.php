@@ -1,13 +1,15 @@
 <?php
 
 class WelcomeController extends Controller{
+    protected $dashboardData;
 
+    protected $model;
     public function __construct()
     {
-
-//        if (!isset($_SESSION['user'])) {
-//                  return Redirect::to('');
-//        }
+        $user = new Users();
+        $this->dashboardData = $user->dashboard();
+        $this->model = new Activity();
+        $this->auth();
     }
 
     public function index() {
@@ -16,6 +18,8 @@ class WelcomeController extends Controller{
       $data['view'] = 'welcome';
 
       $data['active'] = 'dashboard';
+
+      $data['dashboard'] = $this->dashboardData;
 
       return $this->view('layout',$data);
   }
@@ -40,7 +44,7 @@ class WelcomeController extends Controller{
               break;
           case 'employee' :
               $model = new Employee();
-              $items = $model->get("CONCAT(first_name,' ',last_name) as text,id as id");
+              $items = $model->getEmployeeSalary();
               break;
       }
 
@@ -50,5 +54,15 @@ class WelcomeController extends Controller{
       ];
 
       echo json_encode($json);
+  }
+
+  public function activityList(){
+      $data['title'] = 'Activity';
+      $data['view'] = 'pay_activity/list';
+      $data['active'] = 'activity';
+      $data['activityList'] = $this->model->getActivity();
+      $data['assets'] = ['datatable'];
+      $data['dashboard'] = $this->dashboardData;
+      return $this->view('layout',$data);
   }
 }

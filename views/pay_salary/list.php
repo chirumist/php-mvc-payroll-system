@@ -2,7 +2,9 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <a href="<?php route('salary-form');?>" class="btn btn-primary float-right"><i class="fas fa-plus mr-2"></i>Add New</a>
+                <?php if ($this->auth()->type == 'admin') {?>
+                    <a href="<?php route('salary-form');?>" class="btn btn-primary float-right"><i class="fas fa-plus mr-2"></i>Add New</a>
+                <?php } ?>
                 <h4 class="card-title">Salary</h4>
             </div>
             <div class="card-body">
@@ -15,21 +17,35 @@
                             ID
                         </th>
                         <th class="text-center">
-                            NAME
+                            EMPLOYEE
                         </th>
-                        <th class="text-right">
-                            Action
+                        <th class="text-center">
+                            LEAVE DAYS
+                        </th>
+                        <th class="text-center">
+                            ISSUE DATE
+                        </th>
+                        <th class="text-center">
+                            TOTAL AMOUNT
                         </th>
                     </thead>
                     <tbody>
-                        <?php foreach ($data['leave'] as $key => $value) {?>
+                        <?php foreach ($data['salary'] as $key => $value) {?>
                             <tr>
                                 <td>
                                     <?php echo $value->id ?>
                                 </td>
-                                <td class="text-right">
-                                    <a href="<?php route('department-form?id='.$value->id);?>" class="btn btn-success btn-sm">Edit</a>
-                                    <a href="<?php route('department-delete?id='.$value->id);?>" data-delete="true" class="btn btn-danger btn-sm">Delete</a>
+                                <td class="text-center">
+                                    <?php echo $value->emp_name ?>
+                                </td>
+                                <td class="text-center">
+                                    <?php echo $value->leave_days ?>
+                                </td>
+                                <td class="text-center">
+                                    <?php echo isset($value->issue_date) ? date('d M Y',strtotime($value->issue_date)) : '-' ?>
+                                </td>
+                                <td class="text-center">
+                                    <?php echo $value->total ?>
                                 </td>
                             </tr>
                         <?php } ?>

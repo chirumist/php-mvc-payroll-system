@@ -103,10 +103,11 @@ class Controller extends DB {
     public function auth(){
 
         $auth = $this->getSession('auth');
-
         if (!isset($auth) && $auth == '' && '/login' != $_SERVER['REQUEST_URI']) {
             Redirect::to('login');
         }
+
+        return $auth;
     }
 
     public function checkAuth(){

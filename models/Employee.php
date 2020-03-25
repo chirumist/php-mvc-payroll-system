@@ -28,4 +28,10 @@ class Employee extends Model {
 
         return $this->fetch();
     }
+
+    public function getEmployeeSalary(){
+        $this->rawQuery("Select CONCAT(first_name,' ',last_name) as text,id as id,basic_salary from employee");
+
+        return $this->fetchAll();
+    }
 }

@@ -41,13 +41,19 @@
                     <p>Leave</p>
                 </a>
             </li>
-            <li class="<?php if($data['active'] == 'pay_salary'){ echo 'active'; } ?>">
-                <a href="<?php route('salary-create');?>">
+            <li class="<?php if($data['active'] == 'salary'){ echo 'active'; } ?>">
+                <a href="<?php route('salary-list');?>">
                     <i class="nc-icon nc-tile-56"></i>
                     <p>Salary</p>
                 </a>
             </li>
             <?php } ?>
+            <li class="<?php if($data['active'] == 'activity'){ echo 'active'; } ?>">
+                <a href="<?php route('activity-list');?>">
+                    <i class="nc-icon nc-touch-id"></i>
+                    <p>Activity</p>
+                </a>
+            </li>
         </ul>
     </div>
 </div>

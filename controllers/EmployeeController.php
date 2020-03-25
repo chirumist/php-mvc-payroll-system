@@ -4,11 +4,15 @@ class EmployeeController extends Controller{
     protected $model;
 
     protected $userModel;
+
+    protected $dashboardData;
     public function __construct()
     {
         $this->model = new Employee();
 
         $this->userModel = new Users();
+
+        $this->dashboardData = $this->userModel->dashboard();
 
         $this->auth();
 
@@ -20,6 +24,7 @@ class EmployeeController extends Controller{
         $data['active'] = 'employee';
         $data['employeeList'] = $this->model->getEmployee();
         $data['assets'] = ['datatable'];
+        $data['dashboard'] = $this->dashboardData;
         return $this->view('layout',$data);
     }
 
@@ -30,6 +35,7 @@ class EmployeeController extends Controller{
         $data['view'] = 'pay_employee/form';
         $data['active'] = 'employee';
         $data['employee'] = $this->model;
+        $data['dashboard'] = $this->dashboardData;
         if (isset($id) && $id !== ''){
             $data['subtitle'] = 'Edit Employee';
             $data['employee'] = $this->model->findEmployee($id);
@@ -70,8 +76,6 @@ class EmployeeController extends Controller{
     }
 
     public function update(){
-        dd($_POST);
-
         $data = [
             'username' =>  $this->input('username'),
             'email' =>  $this->input('email'),
@@ -106,14 +110,5 @@ class EmployeeController extends Controller{
         header('Content-Type: application/json');
         $data = ['message' => 'Employee deleted successfully!', 'status' => true];
         echo json_encode($data);
-    }
-
-    public function salaryCreate(){
-        $data['view'] = 'pay_salary/form';
-        return $this->view('layout',$data);
-    }
-
-    public function salaryGenerate(){
-
     }
 }
