@@ -39,6 +39,7 @@ same as find record or inseart update delete and also call raw query
 3. Employee Module
 4. Leave Module
 5. Salary Generator
+6. Login Logout Activity
 
 ## Javascript Feature
 1. Ajax
