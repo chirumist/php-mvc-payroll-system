@@ -1,0 +1,9 @@
+{
+    "name" : "php-mvc-payroll-system",
+    "type": "project",
+    "keywords": [
+        "php",
+        "custom-mvc",
+    ],
+    "license": "MIT"
+}
