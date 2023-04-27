@@ -1,5 +1,6 @@
 <?php
-
+use BaseClass\Controller;
+use BaseClass\Redirect;
 class LoginController extends Controller{
 
     protected $model;
@@ -29,9 +30,11 @@ class LoginController extends Controller{
     $pass = $this->input('password');
     $type = $this->input('type');
    
-    $this->model->rawQuery("SELECT * FROM users WHERE email='".$user."' OR username = '".$user."' AND  password = '".$pass."' AND type='".$type."' ") ;
+      $this->model->rawQuery("SELECT * FROM users WHERE type='$type' AND email='$user' OR username = '$user'") ;
+
       $data  = $this->model->fetch();
-      if(!empty($data) && $data !== NULL){
+      
+      if(!empty($data) && $data !== NULL && password_verify($pass, $data->password)){
           if ($data->type == 'employee'){
               $this->model->rawQuery('SELECT id as emp_id from `employee` WHERE user_id='.$data->id);
               $emp = $this->model->fetch();

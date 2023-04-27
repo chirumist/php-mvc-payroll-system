@@ -1,4 +1,6 @@
 <?php
+
+use BaseClass\Model;
 class Leave extends Model{
 
 	protected $table = "leave";

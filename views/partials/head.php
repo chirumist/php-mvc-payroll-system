@@ -9,6 +9,9 @@
 <?php } ?>
 
 <style>
+    * {
+        transition: color 200ms ease !important;
+    }
     .page-item.active .page-link{
         background-color: #57cbcf;
         border-color: #57cbcf;

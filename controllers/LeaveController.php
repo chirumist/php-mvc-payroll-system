@@ -1,5 +1,6 @@
 <?php
-
+use BaseClass\Controller;
+use BaseClass\Redirect;
 class LeaveController extends Controller{
     protected $model;
     protected $dashboardData;

@@ -1,5 +1,7 @@
 <?php
+namespace BaseClass;
 
+use BaseClass\DB;
 class Controller extends DB {
     public function view($path,$data = []){
 

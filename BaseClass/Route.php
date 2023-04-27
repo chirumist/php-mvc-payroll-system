@@ -1,5 +1,7 @@
 <?php 
 
+namespace BaseClass;
+
 class Route {
   public static $isRoute = false;
 

@@ -1,5 +1,6 @@
 <?php
-
+use BaseClass\Controller;
+use BaseClass\Redirect;
 class RegisterController extends Controller{
   public function index() {
     $data = [];
@@ -22,7 +23,7 @@ class RegisterController extends Controller{
         $result = $model->add([
             'username' => $user,
             'email' => $email,
-            'password' => md5($pass)
+            'password' => password_hash($pass, PASSWORD_DEFAULT)
         ]);
       if ($result) {
         $_SESSION['username'] = $user;

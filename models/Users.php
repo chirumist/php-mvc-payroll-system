@@ -1,5 +1,6 @@
 <?php 
 
+use BaseClass\Model;
 class Users extends Model {
 
     protected $table = 'users';

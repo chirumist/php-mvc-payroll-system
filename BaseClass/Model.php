@@ -1,5 +1,7 @@
 <?php
+namespace BaseClass;
 
+use BaseClass\DB;
 class Model extends DB{
 
     protected $table;

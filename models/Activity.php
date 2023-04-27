@@ -1,5 +1,6 @@
 <?php
 
+use BaseClass\Model;
 class Activity extends Model{
 
     protected $table = 'activity';

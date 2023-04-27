@@ -1,5 +1,6 @@
 <?php 
 
+use BaseClass\Model;
 class Salary extends Model {
 
     protected $table = 'salary';

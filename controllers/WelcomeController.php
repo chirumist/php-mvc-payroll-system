@@ -1,5 +1,6 @@
 <?php
-
+use BaseClass\Controller;
+use BaseClass\Redirect;
 class WelcomeController extends Controller{
     protected $dashboardData;
 

@@ -1,5 +1,7 @@
 <?php
+namespace BaseClass;
 
+use PDO; 
 class DB {
 
     public $host = DB_HOST;
