@@ -52,7 +52,7 @@ class EmployeeController extends Controller{
         $data = [
             'username' =>  $this->input('username'),
             'email' =>  $this->input('email'),
-            'password' =>  $this->input('password'),
+            'password' =>  password_hash($this->input('password')),
         ];
 
         $userID = $this->userModel->store($data);

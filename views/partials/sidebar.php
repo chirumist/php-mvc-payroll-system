@@ -54,6 +54,16 @@
                     <p>Activity</p>
                 </a>
             </li>
+
+            <?php if($this->getSession('auth')->type == 'admin') {?>
+                <li class="<?php if($data['active'] == 'reports'){ echo 'active'; } ?>">
+                    <a href="<?php route('reports');?>">
+                        <i class="nc-icon nc-chart-pie-36"></i>
+                        <p>Reports</p>
+                    </a>
+                </li>
+            <?php } ?>
+
         </ul>
     </div>
 </div>

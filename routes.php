@@ -37,6 +37,7 @@ Route::get('/salary-form','SalaryController@create');
 Route::post('/salary-store','SalaryController@store');
 
 Route::get('/ajaxList','WelcomeController@ajaxList');
+Route::get('/reports','WelcomeController@reports');
 
 Route::get('/error-404', 'ErrorController@pageNotFound');
 

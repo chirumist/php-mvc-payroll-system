@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 8.0.17)
 # Database: payroll
-# Generation Time: 2020-03-24 15:02:26 +0000
+# Generation Time: 2023-03-24 15:02:26 +0000
 # ************************************************************
 
 
@@ -41,7 +41,7 @@ LOCK TABLES `activity` WRITE;
 
 INSERT INTO `activity` (`id`, `type`, `created_at`, `user_id`)
 VALUES
-	(13,'login','2020-03-23 02:22:43',13);
+	(1,'login','2023-04-01 02:22:43',13);
 
 /*!40000 ALTER TABLE `activity` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -72,8 +72,8 @@ VALUES
 	(7,'Project Department'),
 	(8,'Sales Department'),
 	(9,'Keychain Department'),
-	(11,'Event Department'),
-	(16,'asdasdasdasdasdqwertyu');
+	(10,'Event Department'),
+	(11,'asdasdasdasdasdqwertyu');
 
 /*!40000 ALTER TABLE `department` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -109,7 +109,8 @@ LOCK TABLES `employee` WRITE;
 
 INSERT INTO `employee` (`id`, `dept_id`, `user_id`, `last_name`, `middle_name`, `first_name`, `address`, `gender`, `basic_salary`, `dob`, `account_no`, `contact_no`)
 VALUES
-	(5,NULL,34,'asdasdasd','dadasd','asdasdas','asdsadas','male',23123100,'2020-03-17',123213123,213123123);
+	(1,NULL,4,'mistry','dilip','chirag','avenger mention','male',30000,'1997-06-1',196192349,9820398458),
+  (2,NULL,5,'kadam','bhura bhai','sanket','gokuldham','male',50000,'1994-04-05',168129350,7620398458);
 
 /*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -173,10 +174,12 @@ LOCK TABLES `users` WRITE;
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `type`)
 VALUES
-	(13,'admin','admin@gmail.com','admin','admin'),
-	(14,'user','user@gmail.com','user','employee'),
-	(33,'sdfsdfs','sdfsdf@asdasdas','admisnad','employee'),
-	(34,'sdfsdfsdfs','sdfsdf@asdasdas','saasdasda','employee');
+-- $2y$10$PVhORvHg1sf0ex50Ge0peOunUY5/.UWRIne1b25cmH8LSrd/xRMfe - 12345678
+	(1,'admin','admin@demo.com','$2y$10$PVhORvHg1sf0ex50Ge0peOunUY5/.UWRIne1b25cmH8LSrd/xRMfe','admin'),
+	(2,'user','user@demo.com','$2y$10$PVhORvHg1sf0ex50Ge0peOunUY5/.UWRIne1b25cmH8LSrd/xRMfe','employee'),
+  (3,'agent','agent@demo.com','$2y$10$PVhORvHg1sf0ex50Ge0peOunUY5/.UWRIne1b25cmH8LSrd/xRMfe','employee'),
+  (4,'chirag','chirag@demo.com','$2y$10$PVhORvHg1sf0ex50Ge0peOunUY5/.UWRIne1b25cmH8LSrd/xRMfe','employee'),
+  (5,'sanket','sanket@demo.com','$2y$10$PVhORvHg1sf0ex50Ge0peOunUY5/.UWRIne1b25cmH8LSrd/xRMfe','employee');
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;

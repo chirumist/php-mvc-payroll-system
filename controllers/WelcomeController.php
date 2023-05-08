@@ -25,6 +25,16 @@ class WelcomeController extends Controller{
       return $this->view('layout',$data);
   }
 
+  public function reports() {
+    $data['title'] = 'Reports';
+    $data['view'] = 'reports';
+    $data['active'] = 'reports';
+    // $data['reportsData'] = $this->model->getActivity();
+    $data['assets'] = ['datatable'];
+    // $data['dashboard'] = $this->dashboardData;
+    return $this->view('layout',$data);
+  }
+
   public function ajaxList () {
       $type = $this->input('type');
 
