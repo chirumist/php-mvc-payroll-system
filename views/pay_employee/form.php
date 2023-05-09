@@ -24,7 +24,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Password</label>
-                                <input type="password" value="<?php echo isset($data['employee']->password) ? $data['employee']->password : ''; ?>" name="password" class="form-control"required="true">
+                                <input type="password" value="" name="password" class="form-control" <?php if(!isset($data['employee']->email)) { echo "required='true'"; } ?>>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -42,19 +42,19 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="">First Name</label>
-                                <input type="text" value="<?php echo isset($data['employee']->first_name) ? $data['employee']->first_name : ''; ?>" name="first_name" class="form-control" required="true" required pattern="[A-Za-z]+">
+                                <input type="text" value="<?php echo isset($data['employee']->first_name) ? $data['employee']->first_name : ''; ?>" name="first_name" class="form-control" required="true" required>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="">Middle Name</label>
-                                <input type="text" value="<?php echo isset($data['employee']->middle_name) ? $data['employee']->middle_name : ''; ?>" name="middle_name" class="form-control" required="true" required pattern="[A-Za-z]+">
+                                <input type="text" value="<?php echo isset($data['employee']->middle_name) ? $data['employee']->middle_name : ''; ?>" name="middle_name" class="form-control" required="true" required>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="">Last Name</label>
-                                <input type="text" value="<?php echo isset($data['employee']->last_name) ? $data['employee']->last_name : ''; ?>" name="last_name" class="form-control" required="true" required pattern="[A-Za-z]+">
+                                <input type="text" value="<?php echo isset($data['employee']->last_name) ? $data['employee']->last_name : ''; ?>" name="last_name" class="form-control" required="true" required>
                             </div>
                         </div>
                         <div class="col-md-12">

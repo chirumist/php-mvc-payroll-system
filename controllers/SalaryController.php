@@ -51,7 +51,7 @@ class SalaryController extends Controller{
         $this->model->rawQuery('SELECT SUM(total_days) as leave_days from `leave` WHERE emp_id='.$empID);
         $leave = $this->model->fetch();
 
-        $total = ($this->input('totalExp') + $this->input('basic_salary')) - ($leave->leave_days * 750);
+        $total = ($this->input('totalExp') + $this->input('basic_salary')) - ($leave->leave_days * $this->input('per_day'));
 
         $data = [
             'emp_id' => $this->input('emp_id'),

@@ -10,6 +10,7 @@ class WelcomeController extends Controller{
         $user = new Users();
         $this->dashboardData = $user->dashboard();
         $this->model = new Activity();
+        $this->department = new Department();
         $this->auth();
     }
 
@@ -29,9 +30,9 @@ class WelcomeController extends Controller{
     $data['title'] = 'Reports';
     $data['view'] = 'reports';
     $data['active'] = 'reports';
-    // $data['reportsData'] = $this->model->getActivity();
+    $data['reportsData'] = $this->department->getReports();
     $data['assets'] = ['datatable'];
-    // $data['dashboard'] = $this->dashboardData;
+    $data['dashboard'] = $this->dashboardData;
     return $this->view('layout',$data);
   }
 

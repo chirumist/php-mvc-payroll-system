@@ -9,7 +9,7 @@
                     <input type="hidden" name="id" value="<?php echo (isset($data['salary']->id) && $data['salary']->id != '') ? $data['salary']->id : -1 ;?>">
                     <div class="row">
                         <div class="col-md-6">
- <div class="row">
+                            <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="">Employee ID</label>
@@ -20,6 +20,12 @@
                                             }
                                             ?>
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="">Per Day CUT</label>
+                                        <input type="number" value="750" name="per_day" class="form-control" />
                                     </div>
                                 </div>
                             </div>

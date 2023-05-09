@@ -52,7 +52,7 @@ class EmployeeController extends Controller{
         $data = [
             'username' =>  $this->input('username'),
             'email' =>  $this->input('email'),
-            'password' =>  password_hash($this->input('password')),
+            'password' =>  password_hash($this->input('password'), PASSWORD_DEFAULT),
         ];
 
         $userID = $this->userModel->store($data);
@@ -80,8 +80,11 @@ class EmployeeController extends Controller{
         $data = [
             'username' =>  $this->input('username'),
             'email' =>  $this->input('email'),
-            'password' =>  $this->input('password'),
         ];
+        $pass = $this->input('password');
+        if(isset($pass) && !empty($pass)) {
+            $data['password'] =  password_hash($this->input('password'), PASSWORD_DEFAULT);
+        }
 
         $userID = $this->userModel->update($data,'id',$this->input('user_id'));
         $data = [];

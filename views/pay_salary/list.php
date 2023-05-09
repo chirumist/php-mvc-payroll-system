@@ -39,13 +39,13 @@
                                     <?php echo $value->emp_name ?>
                                 </td>
                                 <td class="text-center">
-                                    <?php echo $value->leave_days ?>
+                                    <?php echo $value->leave_days  ?? 0 ?>
                                 </td>
                                 <td class="text-center">
                                     <?php echo isset($value->issue_date) ? date('d M Y',strtotime($value->issue_date)) : '-' ?>
                                 </td>
                                 <td class="text-center">
-                                    <?php echo $value->total ?>
+                                    <?php echo $value->total  ?? 0 ?>
                                 </td>
                             </tr>
                         <?php } ?>
